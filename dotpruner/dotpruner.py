@@ -25,8 +25,8 @@ def process_graph(graph: pydot.Graph, node_picker) -> pydot.Graph:
                                 initial_lookup,
                                 pick_node=node_picker)
     
-    new_graph = pydot.Graph(**graph.get_attributes())
-
+    new_graph = pydot.Graph(graph_name=graph.get_name(),
+                            **graph.get_attributes())
     added = set()
     for node in node_to_metadata:
         actual_node = pruned_lookup[node]
