@@ -1,4 +1,4 @@
-# DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg)
+# DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg) [![PyPI version](https://badge.fury.io/py/dotpruner.svg)](https://badge.fury.io/py/dotpruner)
 Pruning redundant nodes from DOT graphs
 
 Before:
