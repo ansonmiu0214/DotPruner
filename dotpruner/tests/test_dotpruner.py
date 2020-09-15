@@ -3,12 +3,21 @@ import tempfile
 import unittest
 
 import dotpruner
+from dotpruner import utils
 from dotpruner.__main__ import main
 
 from .graphs import *
 
 class TestDotPrunerAPI(unittest.TestCase):
-    pass
+
+    def setUp(self):
+        self.COMPLEX_CFSM = COMPLEX_CFSM, PRUNED_COMPLEX_CFSM
+
+    def test_prune_complex_cfsm(self):
+        self.maxDiff = None
+        original_graph, expected = self.COMPLEX_CFSM
+        actual_graph = dotpruner.process_from_string(original_graph)
+        self.assertTrue(utils.same_graph(actual_graph.to_string(), expected))        
 
 class TestDotPrunerCLI(unittest.TestCase):
 
@@ -26,4 +35,4 @@ class TestDotPrunerCLI(unittest.TestCase):
         with open(self.output_path, 'r') as dot_file:
             output_graph = dot_file.read()
         
-        self.assertEqual(output_graph, EMPTY_GRAPH.lstrip())
+        self.assertTrue(output_graph, EMPTY_GRAPH)
