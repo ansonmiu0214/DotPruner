@@ -5,7 +5,7 @@ with open('README.md', 'r') as readme:
 
 setup(
     name='dotpruner',
-    version='0.1',
+    version='0.1.2',
     description='Pruning redundant nodes from DOT graphs',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,6 +19,10 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+    ],
+    install_requires=[
+        'pydot',
+        'pyparsing',
     ],
     python_requires='>=3.6',
 )

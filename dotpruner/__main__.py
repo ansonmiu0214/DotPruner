@@ -7,7 +7,7 @@ from . import process_from_file
 from .utils import info, error
 
 def main(args: typing.List[str]) -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog='dotpruner')
     parser.add_argument('filename', type=str)
     parser.add_argument('--dest', '-d', type=str, default=None)
     parser.add_argument('--overwrite', '-o', type=bool, default=False)
@@ -31,6 +31,7 @@ def main(args: typing.List[str]) -> int:
         return 1
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
