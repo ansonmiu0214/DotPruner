@@ -74,6 +74,10 @@ def prune_graph(node_to_edges: typing.Mapping[str, Node],
     return prune_graph(node_to_edges, final_lookup, pick_node=pick_node) \
         if should_prune_again else final_lookup
 
+def same_graph(graph_1: str, graph_2: str) -> bool:
+    return sorted([line for line in graph_1.splitlines() if line.strip()]) \
+        == sorted([line for line in graph_2.splitlines() if line.strip()])
+
 def info(msg, **kwargs):
     print(f'INFO: {msg}', **kwargs, file=sys.stdout)
 
