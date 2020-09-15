@@ -1,4 +1,4 @@
-# DotPruner [![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg)](https://github.com/ansonmiu0214/DotPruner/actions)
+# DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg)
 Pruning redundant nodes from DOT graphs
 
 > Go from...
