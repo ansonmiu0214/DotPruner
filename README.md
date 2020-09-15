@@ -1,11 +1,9 @@
 # DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg)
 Pruning redundant nodes from DOT graphs
 
-> Before:
-> ![DOT graph before pruning](assets/before.png)
+Before: ![DOT graph before pruning](assets/before.png)
 
-> After:
-> ![DOT graph after pruning](assets/after.png)
+After: ![DOT graph after pruning](assets/after.png)
 
 ## Getting Started
 
