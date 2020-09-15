@@ -45,6 +45,15 @@ original_graph_str = ...
 pruned_graph = dotpruner.process_from_string(original_graph_str)
 ```
 
+Optionally pass in a `node_picker` function
+to change which node is preserved in the pruning stage --
+by default, the lexicographically smaller node is preserved.
+
+```python
+# keep the lexicographically larger node
+dotpruner.process_from_string(original_graph_str, node_picker=max)
+```
+
 ## Tests
 ```bash
 python -m unittest discover dotpruner.tests --verbose

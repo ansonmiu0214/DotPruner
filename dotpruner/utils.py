@@ -3,10 +3,7 @@ import pydot
 import typing
 import sys
 
-def min_max(x, y):
-    return min(x, y), max(x, y)
-
-DEFAULT_NODE_PICKER = min_max
+DEFAULT_NODE_PICKER = min
 
 class Node:
 
@@ -68,7 +65,9 @@ def prune_graph(node_to_edges: typing.Mapping[str, Node],
             if curr_edges == other_edges:
                 should_prune_again = True
 
-                root_node_name, child_node_name = pick_node(curr_node_name, other_node_name)
+                root_node_name = pick_node(curr_node_name, other_node_name)
+                child_node_name = curr_node_name if root_node_name == other_node_name else other_node_name
+
                 final_lookup[child_node_name] = root_node_name
 
     return prune_graph(node_to_edges, final_lookup, pick_node=pick_node) \

@@ -36,6 +36,17 @@ b -> d;
 }
 """
 
+MAX_PRUNED_SIMPLE_GRAPH = """
+digraph G {
+a [label="a"];
+c [label="c"];
+d [label="d"];
+a -> c;
+a -> c;
+c -> d;
+}
+"""
+
 COMPLEX_CFSM = """
 digraph G {
 compound = true;

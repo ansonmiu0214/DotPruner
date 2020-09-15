@@ -12,12 +12,19 @@ class TestDotPrunerAPI(unittest.TestCase):
 
     def setUp(self):
         self.SIMPLE_GRAPH = SIMPLE_GRAPH, PRUNED_SIMPLE_GRAPH
+        self.SIMPLE_GRAPH_MAX = SIMPLE_GRAPH, MAX_PRUNED_SIMPLE_GRAPH
         self.COMPLEX_CFSM = COMPLEX_CFSM, PRUNED_COMPLEX_CFSM
     
     def test_prune_simple_cfsm(self):
         original_graph, expected = self.SIMPLE_GRAPH
         actual_graph = dotpruner.process_from_string(original_graph)
-        self.assertTrue(utils.same_graph(actual_graph.to_string(), expected))     
+        self.assertTrue(utils.same_graph(actual_graph.to_string(), expected))
+    
+    def test_prune_simple_cfsm(self):
+        original_graph, expected = self.SIMPLE_GRAPH_MAX
+        actual_graph = dotpruner.process_from_string(original_graph,
+                                                     node_picker=max)   
+        self.assertTrue(utils.same_graph(actual_graph.to_string(), expected))
 
     def test_prune_complex_cfsm(self):
         original_graph, expected = self.COMPLEX_CFSM
