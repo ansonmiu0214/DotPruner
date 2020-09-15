@@ -11,16 +11,16 @@ DEFAULT_NODE_PICKER = min_max
 class Node:
 
     def __init__(self):
-        self._edges = {}
+        self._edges = []
 
     def add_edge(self, dst, attrs):
-        self._edges[dst] = attrs
+        self._edges.append((dst, attrs))
     
     def edges(self, *, transform_key=None):
         if transform_key is None:
             transform_key = lambda key: key
         
-        return sorted([(transform_key(key), value) for key, value in self._edges.items()],
+        return sorted([(transform_key(key), value) for key, value in self._edges],
                        key=lambda pair: pair[0])
 
 

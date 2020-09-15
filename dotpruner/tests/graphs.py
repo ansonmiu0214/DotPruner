@@ -5,19 +5,34 @@ digraph EMPTY {
 
 FLOWCHART = """
 digraph FLOWCHART {
-
-  a  [label="node one"]
-  b  [label="node two"]
-  c  [label="node three"]
-
-  a -> b -> c
-
+a  [label="node one"];
+b  [label="node two"];
+c  [label="node three"];
+a -> b -> c;
 }
 """
 
-SIMPLE_CFSM = """
+SIMPLE_GRAPH = """
 digraph G {
+a [label="a"];
+b [label="b"];
+c [label="c"];
+d [label="d"];
+a -> b;
+a -> c;
+b -> d;
+c -> d;
+}
+"""
 
+PRUNED_SIMPLE_GRAPH = """
+digraph G {
+a [label="a"];
+b [label="b"];
+d [label="d"];
+a -> b;
+a -> b;
+b -> d;
 }
 """
 
@@ -64,13 +79,15 @@ compound=true;
 "224" [label="224: "];
 "221" [label="221: "];
 "222" [label="222: __Battleships_Game__P1_Svr_P2__"];
-"224" -> "221"  [label="Svr?Winner(Location)"];
-"224" -> "222"  [label="Svr?Sunk(Location)"];
 "222" -> "221"  [label="Svr?Loser(Location)"];
 "222" -> "223"  [label="Svr?Hit(Location)"];
 "222" -> "223"  [label="Svr?Miss(Location)"];
 "222" -> "223"  [label="Svr?Sunk(Location)"];
-"223" -> "224"  [label="Svr!Attack(Location)"];
 "220" -> "222"  [label="Svr!Init(Config)"];
+"224" -> "221"  [label="Svr?Winner(Location)"];
+"224" -> "222"  [label="Svr?Hit(Location)"];
+"224" -> "222"  [label="Svr?Miss(Location)"];
+"224" -> "222"  [label="Svr?Sunk(Location)"];
+"223" -> "224"  [label="Svr!Attack(Location)"];
 }
 """
