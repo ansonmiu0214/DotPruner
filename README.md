@@ -9,22 +9,11 @@ After:
 
 ![DOT graph after pruning](assets/after.png)
 
-## Getting Started
+## Installation
 
-Prerequisites:
-* `python3.x`
-* `python3-venv`
+To install DotPruner with pip, run: `pip install dotpruner`
 
-```bash
-# Create virtual environment
-$ python3 -m venv venv
-
-# Enter virtual environment
-$ source venv/bin/activate
-
-# Install dependencies
-(venv) ... $ pip install -r requirements.txt
-```
+To install DotPruner from source, first clone the repository and then run: `python setup.py install`
 
 ## Usage
 
@@ -32,26 +21,31 @@ $ source venv/bin/activate
 
 Prune graph "in-place":
 ```bash
-python3 -m dotpruner path/to/original/graph.dot
+python -m dotpruner path/to/original/graph.dot
 ```
 
 Use `--dest` or `-d` to specify destination for new graph:
 ```bash
-python3 -m dotpruner path/to/original/graph.dot --dest path/to/new/graph.dot
+python -m dotpruner path/to/original/graph.dot --dest path/to/new/graph.dot
 ```
 
 Use `--overwrite` or `-o` to overwrite existing file in destination:
 ```bash
-python3 -m dotpruner path/to/original/graph.dot -d path/to/new/graph.dot --overwrite
+python -m dotpruner path/to/original/graph.dot -d path/to/new/graph.dot --overwrite
 ```
 
 ### API
 ```python
+import dotpruner
 
+# string representation of DOT graph
+original_graph_str = ...
+
+# pruned graph represented using pydot
+pruned_graph = dotpruner.process_from_string(original_graph_str)
 ```
-
 
 ## Tests
 ```bash
-python3 -m unittest discover dotpruner.tests --verbose
+python -m unittest discover dotpruner.tests --verbose
 ```
