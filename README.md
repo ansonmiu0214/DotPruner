@@ -1,4 +1,4 @@
-# DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg) [![PyPI version](https://badge.fury.io/py/dotpruner.svg)](https://badge.fury.io/py/dotpruner)
+# DotPruner ![DotPruner Python package Status](https://github.com/ansonmiu0214/DotPruner/workflows/tests/badge.svg) ![publish-docs](https://github.com/ansonmiu0214/DotPruner/workflows/publish-docs/badge.svg) [![PyPI version](https://badge.fury.io/py/dotpruner.svg)](https://badge.fury.io/py/dotpruner)
 Pruning redundant nodes from DOT graphs
 
 Before:
@@ -53,6 +53,8 @@ by default, the lexicographically smaller node is preserved.
 # keep the lexicographically larger node
 dotpruner.process_from_string(original_graph_str, node_picker=max)
 ```
+
+### [📒 Full Documentation](https://ansonmiu0214.github.io/DotPruner/)
 
 ## Tests
 ```bash
