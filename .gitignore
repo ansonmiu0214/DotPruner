@@ -133,3 +133,6 @@ dmypy.json
 
 # DOT graph files
 *.dot
+
+# macOS temp files 
+.DS_Store
