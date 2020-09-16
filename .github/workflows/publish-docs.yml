@@ -13,11 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build docs
+      - name: Install dependencies
         run: |
-          cd docs
-          make github
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Build docs
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+          build-command: "make github"
+    
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
