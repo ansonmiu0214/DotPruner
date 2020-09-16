@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to DotPruner’s documentation! &#8212; DotPruner 0.1.3 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,7 +24,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="#">DotPruner 0.1.3 documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">DotPruner 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to DotPruner’s documentation!</a></li> 
       </ul>
     </div>  
 
@@ -36,6 +41,170 @@
 <h1>Welcome to DotPruner’s documentation!<a class="headerlink" href="#welcome-to-dotpruner-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
+<span class="target" id="module-dotpruner.dotpruner"></span><p>This module exposes the entry points for using <cite>dotpruner</cite>,
+either in code or as a CLI.</p>
+<dl class="py function">
+<dt id="dotpruner.dotpruner.process_from_file">
+<code class="sig-prename descclassname">dotpruner.dotpruner.</code><code class="sig-name descname">process_from_file</code><span class="sig-paren">(</span><em class="sig-param">filename: str</em>, <em class="sig-param">*</em>, <em class="sig-param">node_picker=&lt;built-in function min&gt;</em><span class="sig-paren">)</span> &#x2192; pydot.Graph<a class="headerlink" href="#dotpruner.dotpruner.process_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prune DOT graph from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – The file location of the original DOT graph</p></li>
+<li><p><strong>node_picker</strong> – A function that, given the names of two nodes to be pruned,
+picks the node to preserved. Defaults to <cite>min</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the pruned DOT graph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pydot.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dotpruner.dotpruner.process_from_string">
+<code class="sig-prename descclassname">dotpruner.dotpruner.</code><code class="sig-name descname">process_from_string</code><span class="sig-paren">(</span><em class="sig-param">data: str</em>, <em class="sig-param">*</em>, <em class="sig-param">node_picker=&lt;built-in function min&gt;</em><span class="sig-paren">)</span> &#x2192; pydot.Graph<a class="headerlink" href="#dotpruner.dotpruner.process_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prune DOT graph from string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em>) – The original DOT graph as a string</p></li>
+<li><p><strong>node_picker</strong> – A function that, given the names of two nodes to be pruned,
+picks the node to preserved. Defaults to <cite>min</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the pruned DOT graph</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pydot.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-dotpruner.utils"></span><p>This module holds utility methods for parsing components
+of DOT graphs and performing the actual pruning.</p>
+<dl class="py class">
+<dt id="dotpruner.utils.Node">
+<em class="property">class </em><code class="sig-prename descclassname">dotpruner.utils.</code><code class="sig-name descname">Node</code><a class="headerlink" href="#dotpruner.utils.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to represent outgoing edges connected to a node.</p>
+<dl class="py method">
+<dt id="dotpruner.utils.Node.add_edge">
+<code class="sig-name descname">add_edge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dst</span></em>, <em class="sig-param"><span class="n">attrs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dotpruner.utils.Node.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add outgoing edge with attributes <cite>attrs</cite> to <cite>dst</cite> node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> – Name of destination node</p></li>
+<li><p><strong>attrs</strong> – Key-value mapping of edge attributes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dotpruner.utils.Node.edges">
+<code class="sig-name descname">edges</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">transform_key=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dotpruner.utils.Node.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the outgoing edges connected to this node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transform_key</strong> – A function to transform the destination node
+value. Defaults to the identity function.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of tuples, with each tuple defined by the (possibly
+transformed) endpoint and attributes of each edge. The list
+is sorted in ascending order of names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="dotpruner.utils.parse_edges">
+<code class="sig-prename descclassname">dotpruner.utils.</code><code class="sig-name descname">parse_edges</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span><span class="p">:</span> <span class="n">pydot.Graph</span></em><span class="sig-paren">)</span> &#x2192; Mapping<span class="p">[</span>str<span class="p">, </span><a class="reference internal" href="#dotpruner.utils.Node" title="dotpruner.utils.Node">dotpruner.utils.Node</a><span class="p">]</span><a class="headerlink" href="#dotpruner.utils.parse_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse edges from graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> (<em>pydot.Graph</em>) – The graph to parse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A mapping of name to edges for each node.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>typing.Mapping[str, <a class="reference internal" href="#dotpruner.utils.Node" title="dotpruner.utils.Node">Node</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dotpruner.utils.parse_nodes">
+<code class="sig-prename descclassname">dotpruner.utils.</code><code class="sig-name descname">parse_nodes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph</span><span class="p">:</span> <span class="n">pydot.Graph</span></em><span class="sig-paren">)</span> &#x2192; Mapping<span class="p">[</span>str<span class="p">, </span>Mapping<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#dotpruner.utils.parse_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse nodes from graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>graph</strong> (<em>pydot.Graph</em>) – The graph to parse</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A mapping of name to attributes for each node.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>typing.Mapping[str, typing.Mapping]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dotpruner.utils.prune_graph">
+<code class="sig-prename descclassname">dotpruner.utils.</code><code class="sig-name descname">prune_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_to_edges</span><span class="p">:</span> <span class="n">Mapping<span class="p">[</span>str<span class="p">, </span><a class="reference internal" href="#dotpruner.utils.Node" title="dotpruner.utils.Node">dotpruner.utils.Node</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">initial_lookup</span><span class="p">:</span> <span class="n">Mapping<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">pick_node</span></em><span class="sig-paren">)</span> &#x2192; Mapping<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#dotpruner.utils.prune_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes the graph of nodes that share the same outgoing edges.</p>
+<p>This works by ‘merging’ nodes using a lookup table, initially
+<cite>initial_lookup</cite>: if two nodes <cite>x</cite> and <cite>y</cite> are the same, the <cite>pick_node</cite>
+function defines the node to be preserved. Suppose <cite>x</cite> is to be preserved:
+then the lookup table maps <cite>y</cite> to <cite>x</cite>.</p>
+<p>This process terminates when one iteration over the <cite>node_to_edges</cite>
+mapping results in no nodes being pruned. The function returns the
+final lookup table defining the nodes that have been ‘merged’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_to_edges</strong> (<em>typing.Mapping</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="#dotpruner.utils.Node" title="dotpruner.utils.Node"><em>Node</em></a><em>]</em>) – A mapping of name to edges for each node.</p></li>
+<li><p><strong>initial_lookup</strong> (<em>typing.Mapping</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Lookup table for pruning.</p></li>
+<li><p><strong>node_picker</strong> – A function that, given the names of two nodes to be pruned,
+picks the node to preserved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>typing.Mapping[str, str] The final lookup table that maps nodes
+in the original graph to their ‘pruned version’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dotpruner.utils.same_graph">
+<code class="sig-prename descclassname">dotpruner.utils.</code><code class="sig-name descname">same_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">graph_1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">graph_2</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#dotpruner.utils.same_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares the string representation of two DOT graphs for equality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph_1</strong> (<em>str</em>) – String representation of graph 1</p></li>
+<li><p><strong>graph_2</strong> (<em>str</em>) – String representation of graph 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True iff <cite>graph_1</cite> equals <cite>graph_2</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -47,6 +216,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -85,12 +255,16 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="#">DotPruner 0.1.3 documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">DotPruner 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to DotPruner’s documentation!</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Anson Miu.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>
